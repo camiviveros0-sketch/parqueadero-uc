@@ -58,8 +58,27 @@ while i < N and vehiculos < 30:
                 costo_base = tarifa_primera_hora + (horas_permanencia - 1) * tarifa_hora_adicional
             visitantes += 1
 
+        # Descuento nocturno 
+        if not es_sabado and (hora_entrada >= 19 or hora_entrada < 6):
+            total_vehiculo = costo_base * 0.90  # 10% de descuento
+        else:
+            total_vehiculo = costo_base
+
+        total_vehiculo = round(total_vehiculo, 2)
+
+        # Acumulación de estadísticas de vehículos válidos
+        vehiculos += 1
+        total_recaudado += total_vehiculo
+        suma_horas_permanencia += horas_permanencia
+
+        print(f"Vehículo registrado con éxito. Total a pagar: ${total_vehiculo}")
+
+    i += 1  # Incremento de iteración
+
 # Control de cupos máximos
 if vehiculos == 30:
     print("\nPARQUEADERO LLENO")
 
-
+# Cálculos finales
+ocupacion = (vehiculos / 30) * 100
+promedio_permanencia = (suma_horas_permanencia / vehiculos) if vehiculos > 0 else 0.0
