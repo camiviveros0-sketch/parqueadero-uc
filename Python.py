@@ -82,3 +82,12 @@ if vehiculos == 30:
 # Cálculos finales
 ocupacion = (vehiculos / 30) * 100
 promedio_permanencia = (suma_horas_permanencia / vehiculos) if vehiculos > 0 else 0.0
+
+# --- Salida formateada ---
+print("\n====== RESUMEN DEL DIA ======")
+print(f"Vehiculos registrados: {vehiculos}/30")
+print(f"Ocupacion: {round(ocupacion, 1)}%")
+print(f"Recaudo total: ${round(total_recaudado, 2)}")
+print(f"Estudiantes: {estudiantes} | Docentes: {docentes} | Visitantes: {visitantes}")
+print(f"Promedio de permanencia: {round(promedio_permanencia, 1)} horas")
+print("==============================")
